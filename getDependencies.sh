@@ -64,6 +64,7 @@ if [ ! -d l*png* ]; then
 	sudo make install
 fi
 
+cd ../dependencies
 # Getting discord_sdk
 if [ ! -d discord_game_sdk ]; then
 	# TODO: don't change file structure. somone would want to compile without using this script...
