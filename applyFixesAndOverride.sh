@@ -30,4 +30,7 @@ sed -i 's/PLATFORM_LIBPNG_FLAG = -lz -lpng/PLATFORM_LIBPNG_FLAG = -lpng -lz/' ..
 sed -i '/ -static `sdl-config --static-libs`$/! s/^PLATFORM_LIBPNG_FLAG .*$/& -static `sdl-config --static-libs`/' ../minorGems/game/platforms/SDL/Makefile.MinGWCross
 
 #New versions of imagemagick flips images after conversion
-sed -i 's/convert $< -type truecolormatte $@/convert -auto-orient $< -type truecolormatte $@/' ../minorGems/game/platforms/SDL/Makefile.all
+#sed -i 's/convert $< -type truecolormatte $@/convert -auto-orient $< -type truecolormatte $@/' ../minorGems/game/platforms/SDL/Makefile.all
+
+#fix include windows lowercase in discord_sdk
+sed -i 's/<Windows.h>/<windows.h>/' ../dependencies/discord_game_sdk/include/discord_game_sdk.h;
