@@ -26,7 +26,7 @@ cd output
 FOLDERS="objects transitions categories tutorialMaps"
 TARGET="."
 LINK="../OneLifeData7"
-../miniOneLifeCompile/util/createSymLinks.sh $PLATFORM "$FOLDERS" $TARGET $LINK
+../miniOneLifeCompile-Discord/util/createSymLinks.sh $PLATFORM "$FOLDERS" $TARGET $LINK
 
 
 cp -rn ../OneLife/server/settings .

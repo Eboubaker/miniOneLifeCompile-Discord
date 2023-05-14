@@ -39,7 +39,7 @@ for i in ${!pathList[@]}; do
 	# if [[ $PLATFORM == 1 ]] && [ ! -h ${folderList[$i]} ]; then ln -s ${pathList[$i]} .; fi
     # if [[ $PLATFORM == 5 ]]; then
         # if [ -h ${folderList[$i]} ]; then rm ./${folderList[$i]}; fi
-        # ../miniOneLifeCompile/util/mklink.sh /J ${folderList[$i]} ${pathList[$i]}
+        # ../miniOneLifeCompile-Discord/util/mklink.sh /J ${folderList[$i]} ${pathList[$i]}
     # fi
 	
 	###### Full copy
@@ -103,7 +103,7 @@ fi
 
 ###### Compile the game exe
 
-cd ../miniOneLifeCompile
+cd ../miniOneLifeCompile-Discord
 ./cleanOldBuildsAndOptionallyCaches.sh 1
 ./applyFixesAndOverride.sh
 cd ..

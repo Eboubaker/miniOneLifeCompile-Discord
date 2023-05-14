@@ -7,7 +7,7 @@ remote=$2
 remoteURL=$3
 
 ### Clean repo first
-miniOneLifeCompile/repo/ensureClean.sh $repo
+miniOneLifeCompile-Discord/repo/ensureClean.sh $repo
 
 ### Add remote if not exist
 git -C $repo remote show $remote > /dev/null 2>&1 && exit 0 || git -C $repo remote add $remote $remoteURL

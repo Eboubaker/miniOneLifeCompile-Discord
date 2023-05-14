@@ -9,9 +9,9 @@ repo=$1
 git -C $repo add .
 
 ### Loop through the override files
-for f in $(find -path "./miniOneLifeCompile/override/${repo}/*" -type f); do
+for f in $(find -path "./miniOneLifeCompile-Discord/override/${repo}/*" -type f); do
     
-    old="miniOneLifeCompile/override/"$repo"/"
+    old="miniOneLifeCompile-Discord-Discord/override/"$repo"/"
     new=""
     p="${f/"$old"/"$new"}"
     
