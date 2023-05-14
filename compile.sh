@@ -32,10 +32,8 @@ cd output
 if [[ $PLATFORM == 5 ]]; then cp $DISCORD_SDK_PATH/lib/x86/discord_game_sdk.dll ./; fi
 
 # linux: copy discord_game_sdk.so into the local libs folder
-if [[ $PLATFORM == 1 ]]; then 
-	# TODO: not require sudo
-	# in ~/.bashrc export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
-	# and cp discord_sdk.so ~/lib
+# TODO: not tested!
+if [[ $PLATFORM == 1 ]]; then
 	sudo cp $DISCORD_SDK_PATH/lib/x86_64/discord_game_sdk.so /usr/local/lib/
 	sudo chmod a+r /usr/local/lib/discord_game_sdk.so
 fi

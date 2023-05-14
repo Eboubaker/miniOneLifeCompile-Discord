@@ -76,7 +76,5 @@ if [ ! -d discord_game_sdk ]; then
 	wget https://dl-game-sdk.discordapp.net/3.2.1/discord_game_sdk.zip
 	unzip -d discord_game_sdk discord_game_sdk.zip
 	rm discord_game_sdk.zip
-	mv -f discord_game_sdk/c discord_game_sdk/include
-	rm -rf discord_game_sdk/cpp discord_game_sdk/csharp discord_game_sdk/examples discord_game_sdk/lib/aarch64
 	popd
 fi

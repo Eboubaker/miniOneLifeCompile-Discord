@@ -35,5 +35,5 @@ sed -i '/ -static `sdl-config --static-libs`$/! s/^PLATFORM_LIBPNG_FLAG .*$/& -s
 	# sed -i 's/convert $< -type truecolormatte $@/convert -auto-orient $< -type truecolormatte $@/' ../minorGems/game/platforms/SDL/Makefile.all
 # fi
 
-#fix include windows lowercase in discord_sdk
-sed -i 's/<Windows.h>/<windows.h>/' ../dependencies/discord_game_sdk/include/discord_game_sdk.h;
+# fix include windows.h letter case in discord_sdk (For cross-compiling client for Windows on Linux)
+sed -i 's/<Windows.h>/<windows.h>/' ../dependencies/discord_game_sdk/c/discord_game_sdk.h;
