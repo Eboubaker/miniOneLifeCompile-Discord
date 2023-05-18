@@ -14,9 +14,11 @@ MINRO_GEMS_PATH="$COMPILE_ROOT/minorGems"
 
 ##### Configure and Make
 cd OneLife
-
-./configure $PLATFORM "$MINRO_GEMS_PATH" --discord_sdk_path "${DISCORD_SDK_PATH}"
-
+if [ -d $DISCORD_SDK_PATH ]; then
+	./configure $PLATFORM "$MINRO_GEMS_PATH" --discord_sdk_path "${DISCORD_SDK_PATH}"
+else
+	./configure $PLATFORM "$MINRO_GEMS_PATH"
+fi
 cd gameSource
 if [[ $PLATFORM == 5 ]]; then export PATH="/usr/i686-w64-mingw32/bin:${PATH}"; fi
 make
@@ -28,16 +30,19 @@ cd ../..
 mkdir -p output
 cd output
 
-# windows: copy discord_game_sdk.dll into the output folder
-if [[ $PLATFORM == 5 ]]; then cp $DISCORD_SDK_PATH/lib/x86/discord_game_sdk.dll ./; fi
-
-# linux: copy discord_game_sdk.so into the local libs folder
-# TODO: not tested!
-if [[ $PLATFORM == 1 ]]; then
-	sudo cp $DISCORD_SDK_PATH/lib/x86_64/discord_game_sdk.so /usr/local/lib/
-	sudo chmod a+r /usr/local/lib/discord_game_sdk.so
+if [ -d $DISCORD_SDK_PATH ]; then
+	# windows: copy discord_game_sdk.dll into the output folder
+	if [[ $PLATFORM == 5 ]]; then cp $DISCORD_SDK_PATH/lib/x86/discord_game_sdk.dll ./; fi
+	# linux: copy discord_game_sdk.so into the local libs folder
+	# TODO: not tested!
+	if [[ $PLATFORM == 1 ]]; then
+		if [[ ! -f /usr/lib/discord_game_sdk.so ]]; then
+			echo "copying discord_game_sdk.so library"
+			sudo cp $DISCORD_SDK_PATH/lib/x86_64/discord_game_sdk.so /usr/lib/
+			sudo chmod a+r /usr/lib/discord_game_sdk.so
+		fi
+	fi
 fi
-
 FOLDERS="animations categories ground music objects sounds sprites transitions"
 TARGET="."
 LINK="../OneLifeData7"
